@@ -20,12 +20,9 @@ on:
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-
   Build:
     runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Unit Tests
         run: echo Running unit tests!
@@ -35,31 +32,26 @@ jobs:
           sleep 10s
 
   Deploy:    
-      runs-on: ubuntu-latest
-      
-      steps:
-        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-        - uses: actions/checkout@v3
-        - name: Deploying to Staging environment
-          run: |
-            echo Code was successfully deployed to STG!
-            sleep 10s
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Deploying to Staging environment
+        run: |
+          echo Code was successfully deployed to STG!
+          sleep 10s
 
   Tests:
-      uses: alekxaguilar/ta-ci-web-taf/.github/workflows/auto-release.yml@main
-            
-            
-#   Tests:
-#       runs-on: ubuntu-latest
-#       steps:
-#         - name: Script
-#           run: ls -l        
-#         - name: Automated test suite
-#           run: |
-#             echo "Running Automation Test"
-#             sleep 10s
-#         - uses: alekxaguilar/ta-ci-web-taf@1.0
-#           with:
-#             github_token: ${{ secrets.G_ACCESS_TOKEN }}
-#             workflow_file_name: auto-release.yml
-         
+    if: success()
+    uses: alekxaguilar/ta-ci-web-taf/.github/workflows/auto-release.yml@main
+
+  Cleanup:
+    if: success()
+    runs-on: ubuntu-latest      
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploying to Staging environment
+        run: |
+          echo Code was successfully deployed to STG!
+          sleep 10s          
