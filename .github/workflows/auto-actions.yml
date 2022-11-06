@@ -46,7 +46,7 @@ jobs:
             sleep 10s
 
   Tests:
-      uses: alekxaguilar/.github/workflows/ta-ci-web-taf@1.0
+      uses: alekxaguilar/.github/workflows/ta-ci-web-taf.yml@1.0
             
 #   Tests:
 #       runs-on: ubuntu-latest
