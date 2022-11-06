@@ -12,7 +12,12 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+    inputs:
+      auto-release-tests:
+        description: "Automation Release Tests"
+        required: true
+        default: 'auto-release-tests'
+    
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
@@ -44,13 +49,15 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Script
-          run: ls -l
-        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it        
+          run: ls -l        
         - name: Automated test suite
-          uses: actions/checkout@v3
+          run: |
+            echo "Running Automation Test"
+            sleep 10s
+        - uses: alekxaguilar/ta-ci-web-taf@1.0
           with:
-            owner: alekxaguilar            
-            repo: ta-ci-web-taf
+#             owner: alekxaguilar            
+#             repo: ta-ci-web-taf
             github_token: ${{ secrets.G_ACCESS_TOKEN }}
             workflow_file_name: auto-release.yml
          
