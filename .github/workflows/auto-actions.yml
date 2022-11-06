@@ -22,13 +22,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Unit Tests
-        run: Running tests
+        run: echo Running unit tests ;)
       - name: Building
         run: |
           echo Building artifacts!
 
-  Deploy:
+  Deploy:    
       runs-on: ubuntu-latest
+      
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         - uses: actions/checkout@v3
@@ -41,6 +42,7 @@ jobs:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         - uses: actions/checkout@v3
         - name: Automated test suite
-          run: echo Running a small automated test suite!        
-        - name: Send results
-          run: echo Sending the test status report!
+          uses: actions/checkout@v3
+          with:
+            repository: alekxaguilar/ta-ci-web-taf
+            path: auto-release
