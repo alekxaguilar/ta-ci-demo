@@ -46,7 +46,7 @@ jobs:
             sleep 10s
 
   Tests:
-      uses: alekxaguilar/ta-ci-web-taf/.github/workflows/auto-release.yml@1.0
+      uses: alekxaguilar/ta-ci-web-taf/.github/workflows/auto-release.yml
             
 #   Tests:
 #       runs-on: ubuntu-latest
