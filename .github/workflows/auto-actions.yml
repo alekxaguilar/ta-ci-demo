@@ -33,7 +33,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Unit Tests
-        run: echo Running unit tests ;)
+        run: echo Running unit tests!
       - name: Building
         run: |
           echo Building artifacts!
