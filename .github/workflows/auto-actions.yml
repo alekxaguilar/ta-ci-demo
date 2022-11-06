@@ -33,7 +33,7 @@ jobs:
 
   Deploy:    
     runs-on: ubuntu-latest
-    if: success()
+    needs: [Build]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
@@ -43,11 +43,11 @@ jobs:
           sleep 10s
 
   Tests:
-    if: success()
+    needs: [Deploy]
     uses: alekxaguilar/ta-ci-web-taf/.github/workflows/auto-release.yml@main
 
   Cleanup:
-    if: success()
+    needs: [Tests] 
     runs-on: ubuntu-latest      
     steps:
       - uses: actions/checkout@v3
