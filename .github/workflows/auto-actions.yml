@@ -46,18 +46,19 @@ jobs:
             sleep 10s
 
   Tests:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Script
-          run: ls -l        
-        - name: Automated test suite
-          run: |
-            echo "Running Automation Test"
-            sleep 10s
-        - uses: alekxaguilar/ta-ci-web-taf@1.0
-          with:
-#             owner: alekxaguilar            
-#             repo: ta-ci-web-taf
-            github_token: ${{ secrets.G_ACCESS_TOKEN }}
-            workflow_file_name: auto-release.yml
+      uses: alekxaguilar/.github/workflows/ta-ci-web-taf@1.0
+            
+#   Tests:
+#       runs-on: ubuntu-latest
+#       steps:
+#         - name: Script
+#           run: ls -l        
+#         - name: Automated test suite
+#           run: |
+#             echo "Running Automation Test"
+#             sleep 10s
+#         - uses: alekxaguilar/ta-ci-web-taf@1.0
+#           with:
+#             github_token: ${{ secrets.G_ACCESS_TOKEN }}
+#             workflow_file_name: auto-release.yml
          
