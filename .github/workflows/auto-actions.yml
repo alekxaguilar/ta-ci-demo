@@ -26,7 +26,7 @@ jobs:
       - name: Deploying to Staging environment
         run: |
           echo Code was successfully deployed to STG!
-          sleep 10s
+          sleep 5s
       - name: Unit Testing
         run: |
           echo Running Unit tests
