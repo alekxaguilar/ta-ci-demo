@@ -1,7 +1,7 @@
 package com.epam.testtalk;
 import lombok.extern.slf4j.Slf4j;
 /**
- * Hola Aguascalientes Talk
+ * Aguascalientes Talk
  * 
  */
 @Slf4j
