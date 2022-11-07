@@ -14,7 +14,6 @@ public class AguasTalk {
     public void SayHello(){
         System.out.println("Hola Aguascalientes!");
     }
-
     public void SayGoodbye(){
         System.out.println("Adios Aguascalientes!");
     }
